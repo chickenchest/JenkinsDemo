@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('One') {
             steps {
@@ -9,12 +9,17 @@ pipeline {
         }
         stage('Two') {
             steps {
-                echo 'Testing..'
+                input 'Do you want to proceeed to Testing?..'
             }
         }
         stage('Three') {
-            steps {
-                input 'Do you want to proceed to Prod-Deployment?....'
+            when {
+                not{
+                    branch "master"
+                } 
+            }
+            steps{
+                echo "====++++Hello++++===="
             }
         }
     }
