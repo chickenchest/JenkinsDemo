@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('One') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Two') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Three') {
+            steps {
+                input 'Do you want to proceed to Prod-Deployment?....'
+            }
+        }
+    }
+}
